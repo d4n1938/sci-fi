@@ -1,4 +1,3 @@
-import { delay } from "framer-motion";
 import gsap from "gsap";
 import { useEffectOnce } from "usehooks-ts";
 
