@@ -1,9 +1,14 @@
 import gsap from "gsap";
+import { useState } from "react";
 import { useEffectOnce } from "usehooks-ts";
+import Holo from "../Holo/Holo";
 
 const OpenAnimation = () => {
+  const [end, setEnd] = useState(false);
   const date: Date = new Date();
   const time = String(date);
+  // var end: boolean = false;
+
   useEffectOnce(() => {
     var writeTl = gsap.timeline({});
 
@@ -91,6 +96,13 @@ const OpenAnimation = () => {
 
         opacity: 0,
         duration: 1,
+        onComplete: () => {
+          setEnd(true);
+        },
+      })
+      .to("section", {
+        opacity: 0,
+        delay: 2,
       });
   });
   return (
@@ -109,6 +121,13 @@ const OpenAnimation = () => {
           <div className="writeLine">Welcome</div>
         </div>
       </section>
+      {(() => {
+        if (end == true) {
+          console.log(end);
+
+          return <Holo></Holo>;
+        }
+      })()}
       {/* style--------------------------------------------------- */}
       <style jsx>{`
         @import "../../styles/functions.scss";
