@@ -1,12 +1,12 @@
 import gsap from "gsap";
 import { useState } from "react";
 import { useEffectOnce } from "usehooks-ts";
-import Holo from "../Holo/Holo";
-
+import CircleAnimation from "./CircleAnimation";
+import Holo from "./Holo";
 const OpenAnimation = () => {
-  const [end, setEnd] = useState(false);
-  const date: Date = new Date();
-  const time = String(date);
+  const [end, setEnd] = useState<boolean>(false);
+  // const date: Date = new Date();
+  // const time = String(date);
   // var end: boolean = false;
 
   useEffectOnce(() => {
@@ -90,10 +90,7 @@ const OpenAnimation = () => {
         delay: 2.2,
       })
       .to(".wrapper", {
-        // backgroundColor: "black",
-        // opacity: 0,
         delay: 1,
-
         opacity: 0,
         duration: 1,
         onComplete: () => {
@@ -102,7 +99,7 @@ const OpenAnimation = () => {
       })
       .to("section", {
         opacity: 0,
-        delay: 2,
+        delay: 3,
       });
   });
   return (
@@ -110,7 +107,8 @@ const OpenAnimation = () => {
       <section>
         <div className="wrapper">
           <div className="writeLine">System booting</div>
-          <div className="writeLine">{time}</div>
+          {/* <div className="writeLine">{time}</div> */}
+          <div className="writeLine">time</div>
           <div className="writeLine">Initializing . . .</div>
           <div className="writeLine">Level -----1</div>
           <div className="writeLine">Level -----2</div>
@@ -121,13 +119,13 @@ const OpenAnimation = () => {
           <div className="writeLine">Welcome</div>
         </div>
       </section>
-      {(() => {
-        if (end == true) {
-          console.log(end);
-
-          return <Holo></Holo>;
-        }
-      })()}
+      <div className="circle">
+        {(() => {
+          if (end == true) {
+            return <Holo></Holo>;
+          }
+        })()}
+      </div>
       {/* style--------------------------------------------------- */}
       <style jsx>{`
         @import "../../styles/functions.scss";
@@ -140,6 +138,7 @@ const OpenAnimation = () => {
           background-color: $mainGray;
 
           .wrapper {
+            user-select: none;
             position: relative;
             margin: 40px;
             width: 100%;
@@ -157,6 +156,13 @@ const OpenAnimation = () => {
               width: 0;
             }
           }
+        }
+        .circle {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
         }
       `}</style>
     </>
