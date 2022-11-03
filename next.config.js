@@ -1,7 +1,5 @@
-const withVideos = require("next-videos");
-
-module.exports = withVideos({
+module.exports = {
   images: {
-    domains: ["lh3.googleusercontent.com/"],
+    domains: ["https://lh3.googleusercontent.com"],
   },
-});
+};

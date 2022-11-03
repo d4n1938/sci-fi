@@ -107,10 +107,12 @@ const Holo = () => {
           width: 20vw;
         }
         .image {
+          width: 80px;
+          height: 80px;
+          display: block;
           position: fixed;
-          bottom: 0;
-          left: 0;
-          width: 40vw;
+          bottom: 50px;
+          left: 50px;
         }
       `}</style>
     </>
