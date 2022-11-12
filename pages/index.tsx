@@ -6,9 +6,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <Navigation></Navigation>
-      {/* <OpenAnimation></OpenAnimation> */}
-      <Holo></Holo>
+      {/* <Navigation></Navigation> */}
+      <OpenAnimation></OpenAnimation>
+      {/* <Holo></Holo> */}
 
       <section>aaaa</section>
       <section>aaaa</section>

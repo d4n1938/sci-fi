@@ -97,14 +97,15 @@ const OpenAnimation = () => {
           setEnd(true);
         },
       })
-      .to("section", {
+      .to(".animation", {
         opacity: 0,
         delay: 3,
+        duration: 0.5,
       });
   });
   return (
     <>
-      <section>
+      <section className="animation">
         <div className="wrapper">
           <div className="writeLine">System booting</div>
           {/* <div className="writeLine">{time}</div> */}
@@ -130,7 +131,8 @@ const OpenAnimation = () => {
       <style jsx>{`
         @import "../../styles/functions.scss";
         @import url("https://fonts.googleapis.com/css2?family=Goldman&display=swap");
-        section {
+        .animation {
+          overflow: hidden;
           position: fixed;
           top: 0;
           left: 0;
@@ -143,6 +145,7 @@ const OpenAnimation = () => {
             margin: 40px;
             width: 100%;
             height: 100%;
+            overflow-x: hidden;
             .writeLine {
               top: 0;
               left: 20px;

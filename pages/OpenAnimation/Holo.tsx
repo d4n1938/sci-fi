@@ -1,21 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
+import gsap from "gsap";
 import { useEffect } from "react";
 import Vivus from "vivus";
+import Link from "next/link";
 
 const Holo = () => {
+  //Vivus animation
   useEffect(() => {
-    var logo1 = new Vivus(
-      "Layer-1",
-      {
-        type: "delayed",
-        duration: 150,
-        animTimingFunction: Vivus.EASE,
-        start: "autostart",
-      }
-      // function (obj) {
-      //   logo.reset().play();
-      // }
-    );
+    var logo1 = new Vivus("Layer-1", {
+      type: "delayed",
+      duration: 150,
+      animTimingFunction: Vivus.EASE,
+      start: "autostart",
+    });
     var logo2 = new Vivus(
       "Layer-2",
       {
@@ -23,15 +20,34 @@ const Holo = () => {
         duration: 150,
         animTimingFunction: Vivus.EASE,
         start: "autostart",
+      },
+      function () {
+        gsap.to("path", {
+          stroke: "white",
+          duration: 0.3,
+        });
       }
-      // function (obj) {
-      //   logo.reset().play();
-      // }
+    );
+    var logo3 = new Vivus(
+      "Layer-3",
+      {
+        type: "delayed",
+        duration: 150,
+        animTimingFunction: Vivus.EASE,
+        start: "autostart",
+      },
+      function () {
+        gsap.to("path", {
+          stroke: "white",
+          duration: 0.3,
+        });
+      }
     );
   });
 
   return (
     <>
+      {/* left up */}
       <svg
         stroke-miterlimit="10"
         version="1.1"
@@ -54,6 +70,7 @@ const Holo = () => {
           />
         </g>
       </svg>{" "}
+      {/* right down */}
       <svg
         stroke-miterlimit="10"
         version="1.1"
@@ -75,14 +92,93 @@ const Holo = () => {
             stroke-width="27.2849"
           />
         </g>
-      </svg>
-      <img
-        className="image"
-        src="https://lh3.googleusercontent.com/pw/AL9nZEV8XXQ-N6qP2C6arb8rE4hxTJ-8EjqpW7vOu_HXp26eJCcOJ48dh_W4rzIQVZVp8PJkkkKmzEvaveqB0QBDrgN7_dy4i-w_GN_7Bqe1Ev3HBkANm521oywKC_NMoetGCZT5MPsMJUljoQtENPslkg_Z=s976-no?authuser=0"
-        alt=""
-      />
+      </svg>{" "}
+      {/* arrow */}
+      <Link href="/">
+        <svg
+          className="arrow"
+          stroke-miterlimit="10"
+          version="1.1"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs />
+          <g id="Layer-3">
+            <g opacity="1">
+              <g opacity="1">
+                <path
+                  d="M503.346 817.694L309.972 816.256L309.972 488.752L152.952 488.752L503.346 131.22"
+                  fill-opacity="0"
+                  fill-rule="nonzero"
+                  opacity="1"
+                  stroke="#000000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="14.2396"
+                />
+                <path
+                  d="M503.346 961.027L309.972 961.027"
+                  fill="#000000"
+                  fill-opacity="0"
+                  fill-rule="nonzero"
+                  opacity="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="14.2396"
+                />
+                <path
+                  d="M309.972 893.078L503.346 893.078"
+                  fill="#000000"
+                  fill-opacity="0"
+                  fill-rule="nonzero"
+                  opacity="1"
+                  stroke="#000000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="14.2396"
+                />
+              </g>
+            </g>
+            <g opacity="1">
+              <path
+                d="M503.346 817.694L696.719 816.256L696.719 488.752L853.739 488.752L503.346 131.22"
+                fill="#000000"
+                fill-opacity="0"
+                fill-rule="nonzero"
+                opacity="1"
+                stroke="#fff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="14.2396"
+              />
+              <path
+                d="M503.346 961.027L696.719 961.027"
+                fill="#000000"
+                fill-opacity="0"
+                fill-rule="nonzero"
+                opacity="1"
+                stroke="#ffffff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="14.2396"
+              />
+              <path
+                d="M696.719 893.078L503.346 893.078"
+                fill="#000000"
+                fill-opacity="0"
+                fill-rule="nonzero"
+                opacity="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="14.2396"
+              />
+            </g>
+          </g>
+        </svg>
+      </Link>
       {/* style--------------------------------------------------- */}
       <style jsx>{`
+        @import "../../styles/functions.scss";
         div {
           color: red;
           background-color: aqua;
@@ -98,6 +194,9 @@ const Holo = () => {
           width: 20vw;
           margin: 40px;
           transform: rotate(180deg);
+          path {
+            stroke: $textGreen;
+          }
         }
         .right {
           position: fixed;
@@ -105,6 +204,9 @@ const Holo = () => {
           right: 0;
           margin: 40px;
           width: 20vw;
+          path {
+            stroke: $textGreen;
+          }
         }
         .image {
           width: 80px;
@@ -113,6 +215,24 @@ const Holo = () => {
           position: fixed;
           bottom: 50px;
           left: 50px;
+        }
+        .arrow {
+          stroke-width: 2px;
+          fill: "#000000";
+          fill-opacity: "0";
+          fill-rule: "nonzero";
+          opacity: "0.998096";
+          stroke-linecap: "butt";
+          stroke-linejoin: "round";
+          stroke-width: "27.2849";
+          width: 100px;
+          display: block;
+          position: fixed;
+          bottom: 50px;
+          left: 50px;
+          path {
+            stroke: #fff;
+          }
         }
       `}</style>
     </>
