@@ -3,46 +3,51 @@ import gsap from "gsap";
 import { useEffect } from "react";
 import Vivus from "vivus";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
+import { setCookie } from "cookies-next";
 
 const Holo = () => {
   //Vivus animation
   useEffect(() => {
-    var logo1 = new Vivus("Layer-1", {
-      type: "delayed",
-      duration: 150,
-      animTimingFunction: Vivus.EASE,
-      start: "autostart",
-    });
-    var logo2 = new Vivus(
-      "Layer-2",
-      {
+    if (!getCookie("key")) {
+      var logo1 = new Vivus("Layer-1", {
         type: "delayed",
         duration: 150,
         animTimingFunction: Vivus.EASE,
         start: "autostart",
-      },
-      function () {
-        gsap.to("path", {
-          stroke: "white",
-          duration: 0.3,
-        });
-      }
-    );
-    var logo3 = new Vivus(
-      "Layer-3",
-      {
-        type: "delayed",
-        duration: 150,
-        animTimingFunction: Vivus.EASE,
-        start: "autostart",
-      },
-      function () {
-        gsap.to("path", {
-          stroke: "white",
-          duration: 0.3,
-        });
-      }
-    );
+      });
+      var logo2 = new Vivus(
+        "Layer-2",
+        {
+          type: "delayed",
+          duration: 150,
+          animTimingFunction: Vivus.EASE,
+          start: "autostart",
+        },
+        function () {
+          gsap.to("path", {
+            stroke: "white",
+            duration: 0.3,
+          });
+        }
+      );
+      var logo3 = new Vivus(
+        "Layer-3",
+        {
+          type: "delayed",
+          duration: 150,
+          animTimingFunction: Vivus.EASE,
+          start: "autostart",
+        },
+        function () {
+          gsap.to("path", {
+            stroke: "white",
+            duration: 0.3,
+          });
+        }
+      );
+      setCookie("key", "value");
+    }
   });
 
   return (
