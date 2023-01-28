@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       {/* <Navigation></Navigation> */}
       {(() => {
-        if (!hasCookie("key")) {
+        if (!getCookie("key")) {
           console.log(getCookie("key"));
 
           return <OpenAnimation></OpenAnimation>;

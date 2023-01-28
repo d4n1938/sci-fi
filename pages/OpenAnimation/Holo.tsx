@@ -3,13 +3,12 @@ import gsap from "gsap";
 import { useEffect } from "react";
 import Vivus from "vivus";
 import Link from "next/link";
-import { getCookie } from "cookies-next";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie, deleteCookie, hasCookie } from "cookies-next";
 
 const Holo = () => {
   //Vivus animation
   useEffect(() => {
-    if (!getCookie("key")) {
+    if (!getCookie("")) {
       var logo1 = new Vivus("Layer-1", {
         type: "delayed",
         duration: 150,
@@ -46,7 +45,8 @@ const Holo = () => {
           });
         }
       );
-      setCookie("key", "value");
+      setCookie("key", "value", { maxAge: 60 });
+      // deleteCookie("key");
     }
   });
 
